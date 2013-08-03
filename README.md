@@ -280,8 +280,14 @@ OpenHaltRestart.kext				| 否		| 重启补丁，变色龙已经修正重启问�
 ##十、声卡驱动
 ###1. Realtek 8xx
 ####1.1 使用Multibeast
+下载地址：<http://pan.baidu.com/share/link?shareid=1004206354&uk=1594821192>
+
 ####1.2 使用VoodooHDA
+如果Multibeast不行，请尝试VoodooHDA2.8.4  
+下载地址：<http://pan.baidu.com/share/link?shareid=986235878&uk=1594821192>
+
 ####1.3 自行仿冒
+MSI H87M-G43 上的仿冒驱动：<http://pan.baidu.com/share/link?shareid=816314451&uk=1594821192>
 ###2. 其它
 自行搜索解决
 
@@ -297,4 +303,4 @@ OpenHaltRestart.kext				| 否		| 重启补丁，变色龙已经修正重启问�
 <http://i.pcbeta.com/blog-1651940-2561.html>
 
 ##十二、问题反馈
-回帖即可
+在如下地址回帖：<http://bbs.pcbeta.com/viewthread-1380908-1-1.html>
