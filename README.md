@@ -204,30 +204,42 @@ OpenHaltRestart.kext				| 否		| 重启补丁，变色龙已经修正重启问�
 打开 `实用工具->终端`，替换mach_kernel、复制FakeSMC、复制其它驱动、复制Extra配置文件
 	
 	#这里有个小技巧，全手工敲路径是件很累的事，大家可以尝试按Tab键盘自动补全
+	#“#“后面的是注释，不用输的，另外，如果名字有空格，可以使用双引号把名字括起来，或是在空格前\进行转义
 	
 	#进入/Volumes，查看一下挂载的了分区，确认一下，mac安装分区名字
+	#这一步必须要做
 	cd /Volumes/
 	ls
 	
-	#进入到mac安装分区
+	#进入到mac安装分区，特别注意下，注意，这里不要照抄
+	#根据你的实际分区进行修改，我的是mac_test1，你的可能不一样哦，
+	#另外，如前所述，如果名字有空格，则使用双引号把名字括起来，或是在空格前加\进行转义
+	#这一步必须要做
 	cd mac_test1
 	
 	#复制U盘里的mach_kernel到mac安装分区
+	#这一步必须要做
 	cp /mach_kernel .
 	
 	#复制FakeSMC，千万注意后面的 System前面没有/
+	#这一步必须要做
 	cp -a /System/Library/Extensions/FakeSMC.kext System/Library/Extensions/
 	
-	#复制其它驱动，如果你之前给U盘添加了话，就执行一下，没有就算了
+	#复制其它驱动，如果你之前给U盘添加了话，就执行一下，没有就算了，
+	#另外，主板不支持原生电源管理的话，建议把NullCPUPowerManagement.kext也复制一份
+	#这一步可选
 	cp -a /System/Library/Extensions/RealtekRTL8111.kext System/Library/Extensions/
 	cp -a /System/Library/Extensions/IOAHCIBlockStorageInjector.kext System/Library/Extensions/
+	cp -a /System/Library/Extensions/NullCPUPowerManagement.kext System/Library/Extensions/ #可能不需要，我的主板刷BIOS就不需要了
 	
 	#修复一下权限
+	#这一步必须要做
 	chown -R root:wheel System/Library/Extensions/
 	chmod -R 755 System/Library/Extensions/
 	touch System/Library/Extensions/
 	
 	#复制一下Extra配置文件
+	#这一步必须要做
 	cp -a /Extra .
 	
 下面是我操作时的图片，需要注意下，中间有个地方敲错了，已经标出来了
@@ -267,7 +279,10 @@ OpenHaltRestart.kext				| 否		| 重启补丁，变色龙已经修正重启问�
 <http://bbs.pcbeta.com/viewthread-1379618-1-1.html>
 
 ##八、独显驱动
-暂略
+###Nvidia
+6xx系列、7xx系列几乎全部免驱，建议不加GraphicsEnabler变色龙参数，启动试试，不行再搜索论坛吧
+###ATI
+6xxxx系列大部分，7xxxx大部分一般免驱，建议不加GraphicsEnabler变色龙参数，启动试试，不行再搜索论坛吧
 
 ##九、网卡驱动
 
@@ -304,3 +319,15 @@ MSI H87M-G43 上的仿冒驱动：<http://pan.baidu.com/share/link?shareid=81631
 
 ##十二、问题反馈
 在如下地址回帖：<http://bbs.pcbeta.com/viewthread-1380908-1-1.html>
+
+##十三、成功案例
+
+###Hale(就是本人了)
+10.8.4 10.8.5 10.9都已经安装成功了
+
+###lipenggang537
+<http://bbs.pcbeta.com/forum.php?mod=viewthread&tid=1380908&page=5#pid36855617>
+<http://bbs.pcbeta.com/viewthread-1382392-1-1.html>
+
+###siegyu
+<http://bbs.pcbeta.com/viewthread-1380543-1-1.html>
